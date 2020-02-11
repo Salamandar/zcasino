@@ -7,16 +7,22 @@ import os
 from random import randrange
 from math import ceil
 
-def quelleCouleur(chiffre):
-    if chiffre % 2 == 0:
-        return 'noire'
-    else:
-        return 'rouge'
+from enum import Enum
+
+class Couleur(Enum):
+    noire = 0
+    rouge = 1
+
+    def __str__(self):
+        return self.name
+
+Couleur.__new__ = lambda cls, value: super(Couleur, cls).__new__(cls, value % 2)
+
 
 def nouveauGain(pari, roulette, mise):
     if pari == roulette:
         gain=2
-    elif quelleCouleur(pari) == quelleCouleur(roulette):
+    elif Couleur(pari) == Couleur(roulette):
         gain=1.5
     else:
         gain=0
@@ -45,7 +51,7 @@ def partieRoulette():
         try:
             pari = int(pari)
             assert pari>=0 and pari<=49
-            print("Croupier - Votre case est donc", quelleCouleur(pari))
+            print("Croupier - Votre case est donc", Couleur(pari))
         except ValueError:
             print("""la case pariée doit être un entier compris entre 0 et 49""")
             pari=50
