@@ -1,5 +1,7 @@
-#Exercice chapitre 1
-#Jeu de la roulette
+#!/usr/bin/env python3
+
+# Exercice chapitre 1
+# Jeu de la roulette
 
 import os
 from random import randrange
@@ -21,7 +23,7 @@ def nouveauGain(pari, roulette, mise):
     return ceil(mise*gain)
 
 def partieRoulette():
-    #Somme misée
+    # Somme misée
     mise=0
     while mise<=0:
         mise = input("""Croupier - Saisissez une mise entière en dollars \n  """)
@@ -36,7 +38,7 @@ def partieRoulette():
             print("""Vous devez taper un nombre entier positif""")
             continue
 
-    #Choix de la case de la roulette
+    # Choix de la case de la roulette
     pari=50
     while pari<0 or pari>49:
         pari = input("""Croupier - Saisissez une case pour votre mise \n  """)
@@ -53,9 +55,9 @@ def partieRoulette():
             continue
 
 
-    #jeu de roulette
+    # jeu de roulette
     result = randrange(49)
-    print("Croupier - Le résultat de la roulette est", result, "qui est", quelleCouleur(result))
+    print("Croupier - Le résultat de la roulette est", result, "qui est", Couleur(result))
     mise = nouveauGain(pari, result, mise)
     if mise:
         print("""Vous avez gagné """, mise, """$""")
@@ -63,7 +65,7 @@ def partieRoulette():
         print("""Désolé, vous avez perdu votre mise entière""")
 
 
-#début main
+# début main
 if __name__ == "__main__":
     encoreJouer = "Y"
     print("""Croupier - Bienvenu à ce jeu de roulette\n""")
