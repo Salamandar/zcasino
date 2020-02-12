@@ -16,7 +16,9 @@ class Couleur(Enum):
     def __str__(self):
         return self.name
 
-Couleur.__new__ = lambda cls, value: super(Couleur, cls).__new__(cls, value % 2)
+    @classmethod
+    def _missing_(cls, value):
+        return cls(value % 2)
 
 
 def nouveauGain(pari, roulette, mise):
