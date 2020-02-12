@@ -23,15 +23,16 @@ class Couleur(Enum):
 
 def nouveauGain(pari, roulette, mise):
     if pari == roulette:
-        gain=2
+        gain = 2
     elif Couleur(pari) == Couleur(roulette):
-        gain=1.5
+        gain = 1.5
     else:
-        gain=0
+        gain = 0
     return ceil(mise*gain)
 
 def partieRoulette():
     # Somme misée
+    mise = 0
     while True:
         mise = input("""Croupier - Saisissez une mise entière en dollars \n  """)
         try:
@@ -45,6 +46,7 @@ def partieRoulette():
             continue
 
     # Choix de la case de la roulette
+    pari = 0
     while True:
         pari = input("""Croupier - Saisissez une case pour votre mise \n  """)
         try:
@@ -56,7 +58,6 @@ def partieRoulette():
         except ValueError, AssertionError:
             print("""la case pariée doit être un entier compris entre 0 et 49""")
             continue
-
 
     # jeu de roulette
     result = randrange(49)
