@@ -39,8 +39,7 @@ def partieRoulette():
             mise = int(mise)
             assert mise > 0
             break
-
-        except ValueError, AssertionError:
+        except (ValueError, AssertionError):
             print("""Vous devez taper un nombre entier positif""")
             mise = 0
             continue
@@ -54,10 +53,10 @@ def partieRoulette():
             assert pari >= 0 and pari <= 49
             print("Croupier - Votre case est donc", Couleur(pari))
             break
-
-        except ValueError, AssertionError:
+        except (ValueError, AssertionError):
             print("""la case pariée doit être un entier compris entre 0 et 49""")
             continue
+
 
     # jeu de roulette
     result = randrange(49)
