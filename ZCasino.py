@@ -32,33 +32,28 @@ def nouveauGain(pari, roulette, mise):
 
 def partieRoulette():
     # Somme misée
-    mise=0
-    while mise<=0:
+    while True:
         mise = input("""Croupier - Saisissez une mise entière en dollars \n  """)
         try:
             mise = int(mise)
-            assert mise>0
-        except ValueError:
+            assert mise > 0
+            break
+
+        except ValueError, AssertionError:
             print("""Vous devez taper un nombre entier positif""")
             mise = 0
             continue
-        except AssertionError:
-            print("""Vous devez taper un nombre entier positif""")
-            continue
 
     # Choix de la case de la roulette
-    pari=50
-    while pari<0 or pari>49:
+    while True:
         pari = input("""Croupier - Saisissez une case pour votre mise \n  """)
         try:
             pari = int(pari)
-            assert pari>=0 and pari<=49
+            assert pari >= 0 and pari <= 49
             print("Croupier - Votre case est donc", Couleur(pari))
-        except ValueError:
-            print("""la case pariée doit être un entier compris entre 0 et 49""")
-            pari=50
-            continue
-        except AssertionError:
+            break
+
+        except ValueError, AssertionError:
             print("""la case pariée doit être un entier compris entre 0 et 49""")
             continue
 
